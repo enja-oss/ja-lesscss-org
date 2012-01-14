@@ -11,6 +11,4 @@ Jekyll-bootstrap is the quickest and most hassle-free way to get your new Jekyll
 
 [Jekyll-Bootstrap](http://jekyllbootstrap.com/)
 
-## License
-
 [Creative Commons](http://creativecommons.org/licenses/by-nc-sa/3.0/)
