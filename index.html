@@ -1,0 +1,106 @@
+---
+layout: default
+title: LESS - The Dynamic Stylesheet language
+---
+<header id="main">
+  <div class="content">
+    <section id="intro">
+      <div id="logo"></div>
+      <h2>The <span>dynamic</span> stylesheet <span>language</span>.</h2>
+      <h3>
+        LESSは<span>変数</span>、<span>ミックスイン</span>、<span>演算</span>、そして<span>関数</span>のような動的な処理をCSSに追加拡張できます。  
+        <span>クライアントサイド</span>(IE6+、Webkit、Firefox)、また<span>node.js</span>、<span>Rhino</span>を利用してサーバーサイドでも動作します。
+      </h3>
+      <a id="download" href="http://lesscss.googlecode.com/files/less-1.2.0.min.js">
+        <img src="/assets/themes/lesscss-org/images/download-button.png"></a><div id="download-info">バージョン <code>1.2.0</code></div>
+    </section>
+
+	<section id="example">
+		{% capture include_example %}
+			{% include section/example.md %}
+		{% endcapture %}
+		{{ include_example }}
+	</section>
+
+  </div>
+  <div style="clear: both"></div>
+</header>
+
+<section id="menu">
+  <div class="content">
+    <nav>
+      <a href="#synopsis">概要</a>
+      <a href="#guide">使用法</a>
+      <a href="#docs" id="guide-link">シンタックス</a>
+      <a href="http://github.com/cloudhead/less.js">ソース</a>
+      <a href="#about">アバウト</a>
+    </nav>
+    <a href="https://twitter.com/cloudhead" class="twitter-follow-button" data-show-screen-name="false" data-width="80px" data-show-count="false" data-lang="en">Follow on twitter</a>
+    <div id="dropdown">
+      <ul>
+        <li><a href="#-変数">変数</a></li>
+        <li><a href="#-ミックスイン">ミックスイン</a></li>
+        <li><a href="#-ミックスインの引数利用">ミックスインの引数利用</a></li>
+        <li><a href="#-パターンマッチング">パターンマッチング</a></li>
+        <li><a href="#-ネストルール">ネストルール</a></li>
+        <li><a href="#-演算">演算</a></li>
+        <li><a href="#-カラー関数">カラー関数</a></li>
+        <li><a href="#-名前空間">名前空間</a></li>
+        <li><a href="#-スコープ">スコープ</a></li>
+        <li><a href="#-コメント">コメント</a></li>
+        <li><a href="#-インポート">インポート</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="synopsis" class="page">
+	<div class="content">
+		{% capture include_synopsis %}
+			{% include section/synopsis.md %}
+		{% endcapture %}
+		{{ include_synopsis }}
+  </div>
+</section>
+
+<section id="guide" class="page">
+	<div class="content">
+		{% capture include_guide %}
+			{% include section/guide.md %}
+		{% endcapture %}
+		{{ include_guide }}
+  </div>
+</section>
+
+<section id="docs" class="page">
+  <h1>シンタックス</h1>
+  <div class="content">
+		{% capture include_doc %}
+			{% include section/doc.md %}
+		{% endcapture %}
+		{{ include_doc }}
+  </div>
+</section>
+
+<section id="translations" class="page">
+	<div class="content">
+		<h1>このページの翻訳</h1>
+		{% capture include_translations %}
+			{% include section/translations.md %}
+		{% endcapture %}
+		{{ include_translations }}
+  </div>
+</section>
+
+<section id="about" class="page">
+	<div class="content">
+		{% capture include_about %}
+			{% include section/about.md %}
+		{% endcapture %}
+		{{ include_about }}
+    <footer>
+        <p>powered by <a href="http://cloudhead.io/toto">toto</a>, <a href="http://github.com/cloudhead/less.js">LESS</a> and <a href="http://github.com/cloudhead/hiless">hiless</a></p>
+        <p id="copy">Copyright &copy; Alexis Sellier 2010</p>
+    </footer>
+  </div>
+</section>

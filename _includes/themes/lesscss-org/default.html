@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+  <head>
+    <script id="twitter-wjs" src="//platform.twitter.com/widgets.js"></script>
+    <link rel="stylesheet/less" type="text/css" href="{{ theme_asset_path }}/less/main.less">
+    <script src="{{ theme_asset_path }}/js/less.js" type="text/javascript"></script>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Serif' rel='stylesheet' type='text/css'>
+    <meta charset="utf-8">
+    <title>{{ page.title }}</title>
+    <script type="text/javascript">
+      (function () {
+        if (/Microsoft/.test(navigator.appName)) { return }
+
+        window.onload = function () {
+          var headers = document.querySelectorAll('#docs h2, #guide h1');
+          var menu = document.getElementById('menu');
+          var init = menu.offsetTop;
+          var docked;
+
+          for (var i = 0; i < headers.length; i++) {
+            headers[i].id = '-' + headers[i].innerHTML.toLowerCase().replace(/ /g, '-');
+          }
+
+          window.onscroll = function () {
+            if (!docked && (menu.offsetTop - scrollTop() < 0)) {
+              menu.style.top = 0;
+              menu.style.position = 'fixed';
+              menu.className = 'docked';
+              docked = true;
+            } else if (docked && scrollTop() <= init) {
+              menu.style.position = 'absolute';
+              menu.style.top = init + 'px';
+              menu.className = menu.className.replace('docked', '');
+              docked = false;
+            }
+          };
+
+
+          (function () {
+            var link     = document.getElementById('guide-link'),
+                menu     = document.getElementById('menu'),
+                dropdown = document.getElementById('dropdown');
+
+            link.onmouseover = function () {
+              link.className = 'dark-red';
+              dropdown.style.display = 'block';
+            };
+            link.onmouseout = function (e) {
+              if (e.relatedTarget === dropdown) { return }
+              link.className = link.className.replace('dark-red', '');
+              hide ();
+            };
+            dropdown.onmouseout = function (e) {
+              var t = e.relatedTarget;
+
+              if (e.target == link) { return }
+
+              while (t !== document.body) {
+                if (t == dropdown) { return }
+                else               { t = t.parentNode }
+              } 
+              link.className = link.className.replace('dark-red', '');
+              hide ();
+            };
+
+            function hide() { dropdown.style.display = 'none' }
+          })();
+        };
+
+        function scrollTop() {
+          return document.body.scrollTop || document.documentElement.scrollTop;
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <section>
+
+    {{ content }}
+
+    </section>
+    <a href="http://github.com/cloudhead/less.js">
+      <img style="position: absolute; z-index: 5; top: 0; left: 0; border: 0;"
+           src="http://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png"
+           alt="Fork me on GitHub" />
+    </a>
+	<script src="{{ theme_asset_path }}/js/hiless.js"></script>
+  </body>
+</html>

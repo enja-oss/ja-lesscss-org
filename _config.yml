@@ -3,19 +3,13 @@
 permalink: /:categories/:year/:month/:day/:title 
 auto: true
 pygments: true
+markdown: kramdown
 var:
   archive_path: /archive.html
   categories_path : /categories.html
   tags_path : /tags.html
 
 production_url : http://username.github.com # or your custom domain name
-title : Jekyll Boostrap
-
-author :
-  name : Name Lastname
-  email : blah@email.test
-  github : username
-  twitter : username
-  feedbuder : feedname
+title : LESS &laquo; The Dynamic Stylesheet language
 
 exclude: .rbenv-version
