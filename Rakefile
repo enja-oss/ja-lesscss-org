@@ -31,3 +31,13 @@ desc "Launch preview environment"
 task :preview do
   system "jekyll --auto --server"
 end
+
+desc "Build site"
+task :build do
+  system "jekyll"
+end
+
+desc "Deploy Amazon s3 Using s3Sync"
+task :deploy do
+  system('s3sync -rpv _site/ less-ja.studiomohawk.com:')
+end
