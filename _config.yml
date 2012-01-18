@@ -12,4 +12,4 @@ var:
 production_url : http://username.github.com # or your custom domain name
 title : LESS &laquo; The Dynamic Stylesheet language
 
-exclude: .rbenv-version
+exclude: .rbenv-version, Rakefile
