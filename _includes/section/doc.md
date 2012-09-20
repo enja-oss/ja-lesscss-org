@@ -564,5 +564,5 @@ background-image: url("@{base-url}/images/bg.png");
 
 <p>またJavaScriptの環境にアクセスすることもできます:</p>
 {% highlight text %}
-@height: `document.body.clientHeight`;`
+@height: `document.body.clientHeight`;
 {% endhighlight %}
