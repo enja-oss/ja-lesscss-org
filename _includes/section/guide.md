@@ -1,6 +1,10 @@
 <h1>クライアントサイドでの使用法</h1>
 
 <p>
+クライアントサイドでの利用はLESSを始めるのに最も手軽な方法で、開発を行うのにも便利です。プロダクション用、とくにパフォーマンスが重要になる場合はnodeかサードパーティツールを使ってプリコンパイルを行うことを推奨しています。
+</p>
+
+<p>
 	<code>.less</code>スタイルシートを<code>rel</code>の値を"<code>stylesheet/less</code>"にしてリンクします:
 </p>
 {% highlight text %}
@@ -15,7 +19,7 @@
 {% endhighlight %}
 
 <p>
-	スタイルシートをスクリプトの<em>前</em>に追記してください。
+	スタイルシートは必ずスクリプトの<em>前</em>に記述するようにしてください。
 </p>
 
 <h3>ウォッチモード</h3>
@@ -35,17 +39,29 @@
 	LESSをサーバにインストールするのにもっとも簡単な方法はnode.jsのパッケージマネージャである<a href="http://github.com/isaacs/npm">npm</a>を利用する方法です:
 </p>
 {% highlight text %}
-    $ npm install less
+    $ npm install -g less
 {% endhighlight %}
 
-<h3>利用する</h3>
+<h2>コマンドラインでの利用方</h2>
+
+<p>LESSはコマンドラインからコンパイラを起動することができます:</p>
+{% highlight text %}
+    $ lessc styles.less
+{% endhighlight %}
+
+<p>上記のコマンドにより<code>stdout</code>へコンパイル後のCSSを出力できます。この出力をお好きなファイルにリダイレクトすることができます:</p>
+{% highlight text %}
+    $ lessc styles.less > styles.css
+{% endhighlight %}
+<p><code>-x</code>オプションを追記することで圧縮したCSSを出力することができます。もう少し高度な圧縮を利用したい場合は<a href="http://developer.yahoo.com/yui/compressor/css.html">YUI CSS Compressor</a>を<code>--yui-compress</code>オプションを使って利用できます。</p>
+
+<h3>node.jsでの利用方</h3>
 
 <p>
-	インストールが完了したら、node.jsから下記のようにコンパイラを起動できます:
+	node.jsから下記のようにコンパイラを起動できます:
 </p>
 {% highlight text %}
     var less = require('less');
-    
     less.render('.class { width: 1 + 1 }', function (e, css) {
         console.log(css);
     });
@@ -82,15 +98,10 @@
     });
 {% endhighlight %}
 
-<h2>コマンドラインでの使用法</h2>
+<h1>サードパーティツール</h1>
 
-<p>LESSはコマンドラインからコンパイラを起動することができます:</p>
-{% highlight text %}
-    $ lessc styles.less
-{% endhighlight %}
+<p>githubのwiki上でツールに関するセクションがドキュメントされています。</p>
 
-<p>上記のコマンドにより<code>stdout</code>へコンパイル後のCSSを出力できます。この出力をお好きなファイルにリダイレクトすることができます:</p>
-{% highlight text %}
-    $ lessc styles.less > styles.css
-{% endhighlight %}
-<p><code>-x</code>オプションを追記することで圧縮したCSSを出力することができます。</p>
+<p><a href="https://github.com/cloudhead/less.js/wiki/Command-Line-use-of-LESS">コマンドラインツール</a></p>
+
+<p><a href="https://github.com/cloudhead/less.js/wiki/GUI-compilers-that-use-LESS.js">GUIツール</a></p>
