@@ -26,7 +26,7 @@ content: @@var;
 content: "I am fnord.";
 {% endhighlight %}
 
-<p>LESSにおける変数は実際には定数となり、定義できるのは1度のみとなります。</p>
+<p>LESSにおける変数は実際には「定数’となり、定義できるのは1度のみとなります。</p>
 
 <h2>ミックスイン</h2>
 
@@ -62,7 +62,7 @@ color: red;
 	border-bottom: solid 2px black;
 }
 {% endhighlight %}
-<p>どのCSSの *クラス* 、*id* 、または *要素* の宣言ブロックでも上記のようにミックスインすることができます。</p>
+<p>どのCSSの *クラス*や*id*の宣言ブロックでも上記のようにミックスインすることができます。</p>
 
 <h2>ミックスインの引数利用</h2>
 
@@ -178,12 +178,13 @@ box-shadow: 2px 5px 1px #000;
 <p>以下にどう処理されたかを示します:</p>
 
 <ul>
-<li>一番はじめのミックスインの定義は第一引数として<code>dark</code>を要求していたため、マッチしません。</li>
+<li>一番始めのミックスインの定義は第一引数として<code>dark</code>を要求していたため、マッチしません。</li>
 <li>二番目のミックスインの定義は<code>light</code>を要求していたためマッチしました。</li>
 <li>三番目のミックスインの定義はどんな引数も要求していないためマッチしました。</li>
-<li>ミックスインの定義のなかでマッチしたものだけが利用されます。変数はその変数に定義されたどの値ともマッチします。それ以外は引数として渡した値そのものにのみマッチします。</li>
 
-<p>また引数の個数をマッチさせることができます。例は以下になります:</p>
+<p>ミックスインの定義のなかでマッチしたものだけが利用されます。変数はその変数に定義されたどの値ともマッチします。それ以外は引数として渡した値そのものにのみマッチします。</p>
+
+<p>また引数の個数に対してマッチさせることができます。例は以下になります:</p>
 {% highlight text %}
 .mixin (@a) {
 	color: @a;
@@ -278,7 +279,7 @@ box-shadow: 2px 5px 1px #000;
 <li>isem</li>
 </ul>
 
-<p>最後に、ガードの中での条件文に追加の条件が必要な場合には `and` キーワードを利用できます: </p>
+<p>最後にガードの中での条件文に追加の条件が必要な場合には `and` キーワードを利用できます: </p>
 {% highlight text %}
 .mixin (@a) when (isnumber(@a)) and (@a > 0) { ... }
 {% endhighlight %}
@@ -289,7 +290,7 @@ box-shadow: 2px 5px 1px #000;
 
 <h2>ルールセットのネスト</h2>
 
-<p>LESSはカスケードのかわり、またはカスケードとのコンビネーションとして *入れ子* を利用することができます。<br>
+<p>LESSはカスケードの代わり、またはカスケードとのコンビネーションとして *入れ子* を利用することができます。<br>
 例えば以下のCSSを見てください:</p>
 {% highlight text %}
 #header { color: black; }
@@ -327,7 +328,7 @@ box-shadow: 2px 5px 1px #000;
 {% endhighlight %}
 <p>コードは短く、<code>DOMツリー</code>の構造に近い書き方をすることができます。</p>
 
-<p><code>&amp;</code>コンビネータは親セレクタに対して子孫セレクタとしてセレクタを入れ子にするかわりに、親セレクタに連結することができます。</br>
+<p><code>&amp;</code>コンビネータは親セレクタに対して子孫セレクタとしてセレクタを入れ子にする代わりに、親セレクタに連結することができます。</br>
 疑似クラスの<code>:hover</code>や<code>:focus</code>を定義する場合には特に重要になります。</p>
 
 <p>例:</p>
@@ -341,7 +342,7 @@ box-shadow: 2px 5px 1px #000;
 	}
 }
 {% endhighlight %}
-<p>は以下のように出力されます。</p>
+<p>は以下のように出力されます:</p>
 {% highlight text %}
 .bordered.float {
 	float: left;  
@@ -350,6 +351,44 @@ box-shadow: 2px 5px 1px #000;
 	margin: 5px;
 }
 {% endhighlight %}
+
+<h2>&amp;の高度な使い方</h2>
+
+<p>
+&amp;記号は複数クラスと入れ子ルールの順番を反対にするのにも利用できます。
+</p>
+
+<p>例:</p>
+
+{% highlight text %}
+.child, .sibling {
+    .parent & {
+        color: black;
+    }
+    & + & {
+        color: red;
+    }
+}
+{% endhighlight %}
+
+<p>は以下のように出力されます:</p>
+
+{% highlight text %}
+.parent .child,
+.parent .sibling {
+    color: black;
+}
+.child + .child,
+.child + .sibling,
+.sibling + .child,
+.sibling + .sibling {
+    color: red;
+}
+{% endhighlight %}
+
+<p>
+また&amp;はミックスイン内でミックスイン外の入れ子ルールに対する参照としても利用できます。
+</p>
 
 <h2>演算</h2>
 <p>数字、色、変数に演算を利用することができます。以下にいくつかの例をあげます:</p>
@@ -397,6 +436,10 @@ spin(@color, 10);         // @colorから10度色相が大きい値を返しま�
 spin(@color, -10);        // @colorから10度色相が小さい値を返します
 
 mix(@color1, @color2);    // @color1 と @color2 をミックスした値を返します
+
+contrast(@color1, @darkcolor, @lightcolor); 
+		// もし@color1が >50%以上のluma(例: 明るい色)の場合に@darkcolorを返し、
+		// そうでなければ@lightcolorを返します
 {% endhighlight %}
 
 <p>使い方は簡単です:</p>
@@ -414,6 +457,7 @@ hue(@color);        // @colorの色相チャネルの値を返します
 saturation(@color); // @colorの彩度チャネルの値を返します
 lightness(@color);  // @colorの明度チャネルの値を返します
 alpha(@color);      // @colorの透明度チャネルの値を返します
+luma(@color);       // @colorのluma値(知覚明度)を返します
 {% endhighlight %}
 <p>これは別のカラーチャネルを利用して新しい色を作成する場合に活用できます。例えば:</p>
 {% highlight text %}
@@ -429,13 +473,13 @@ round(1.67); // `2` を返します
 ceil(2.4);   // `3` を返します
 floor(2.6);  // `2` を返します
 {% endhighlight %}
-<p>値をパーセンテージに変換させたい場合はパーセンテージ関数を利用して行うことができます:</p>
+<p>値をパーセンテージに変換させたい場合はパーセンテージ関数を利用することができます:</p>
 {% highlight text %}
 percentage(0.5); // `50%` を返します
 {% endhighlight %}
 <h2>名前空間</h2>
 
-<p>整理やカプセル化のために変数やミックスインをグループ化する必要になることがあります。<br>
+<p>構成やカプセル化のために変数やミックスインをグループ化する必要があることがあります。<br>
 LESSではそれを直感的に行うことがでます。例えば配布目的や再利用の際に<code>#bundle</code>以下に変数やミックスインを1つにまとめたいとします:</p>
 {% highlight text %}
 #bundle {
@@ -539,9 +583,42 @@ background-image: url("@{base-url}/images/bg.png");
 }
 {% endhighlight %}
 
+<h2>セレクタの挿入</h2>
+
+<p>If you want to use less variables inside selectors, you can do this by referencing the variable using <code>@{selector}</code> as
+in string interpolation. For example:</p>
+
+<p>
+もしLESSの変数をセレクタとして利用したい場合に、文字列の挿入と同じように<code>@{selector}</code>を使って変数を参照できます。例として:
+</p>
+
+{% highlight text %}
+@name: blocked;
+.@{name} {
+    color: black;
+}
+{% endhighlight %}
+
+<p>は以下のように出力されます:</p>
+
+{% highlight text %}
+.blocked {
+    color: black;
+}
+{% endhighlight %}
+
+<p>Note: prior to less 1.3.1 a <code>(~<span class="string">"@{name}"</span>)</code> type of selector was supported. Support for this will be removed in the near future.</p>
+
+<p>
+注意: LES 1.3.1以前のバージョンでは<code>(~<span class="string">"@{name}"</span>)</code>のようなセレクタはサポートされていましたが、近い将来このサポートされなくなる予定です。
+</p>
+
 <h2>JavaScriptの実行</h2>
 
-<p>JavaScript表現を.lessファイル内で実行するには表現をバックティックスで囲んでください:</p>
+<p>
+.lessファイル内でJavaScriptの式は値内で実行することができます。ただしこの機能を使う場合は注意が必要です。LESSのバージョン違いの互換性を保つことが出来ませんし、LESSそのもののメンテナンスも難しくなるからです。可能であれば、実装しようとしている関数についてはgithubにて依頼してください。現在デフォルトで利用できる関数について拡張しようとしています。しかし、それでもJavaScriptを.lessファイル内で実行したい場合は式をバックティックスで囲んでください:
+</p>
+
 {% highlight text %}
 @var: `"hello".toUpperCase() + '!'`;
 {% endhighlight %}

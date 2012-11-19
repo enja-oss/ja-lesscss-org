@@ -5,8 +5,7 @@
 
 <table class="code-example" cellpadding="0">
   <tr><td>
-<pre class="less-example">
-// LESS
+<pre class="less-example"><code>// LESS
 
 @color: #4D926F;
 
@@ -31,19 +30,23 @@ h2 {
 
 <h2>ミックスイン</h2>
 
-<p>ミックスインはクラス名を宣言のように記述することで、クラス内で設定した宣言ブロックを埋め込むことができます。<br>
-これは変数と同じような機能をクラスでもできるようしています。<br>
-またミックスインは下記の例のように関数と同じく引数を設定できます。</p>
+<p>
+ミックスインはクラス名をプロパティの一部のように記述することで、そのクラス内で設定したすべてのプロパティをほかのクラスに埋め込むことができます。<br>
+編集と同じような機能をクラスでも利用できるということです。
+<br>
+またミックスインは下記の例のように関数と同じく引数を設定できます。
+</p>
 
 <table class="code-example" cellpadding="0">
   <tr><td>
-  <pre class="less-example"><code>
- // LESS
+  <pre class="less-example"><code>// LESS
 
 .rounded-corners (@radius: 5px) {
-  border-radius: @radius;
   -webkit-border-radius: @radius;
   -moz-border-radius: @radius;
+  -ms-border-radius: @radius;
+  -o-border-radius: @radius;
+  border-radius: @radius;
 }
 
 #header {
@@ -54,18 +57,21 @@ h2 {
 }</code></pre></td>
 
 <td>
-<pre class="css-output"><code>
-/* コンパイル後のCSS */
+<pre class="css-output"><code>/* コンパイル後のCSS */
 
 #header {
-  border-radius: 5px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
 }
 #footer {
-  border-radius: 10px;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  border-radius: 10px;
 }</code></pre>
   </td></tr>
 </table>
@@ -118,8 +124,9 @@ h2 {
 <h2>関数と演算</h2>
 
 <p>スタイルシート内の要素でほかの要素と比例する要素がありますか？
-演算は色や数値の対して値に足し算、引き算、割り算、かけ算を行うことができます。
+演算は色や数値の対して足し算、引き算、割り算、かけ算を行うことができます。
 これによりプロパティ間に複雑な関係性を持たせることができるようになります。
+演算はCSSとの互換性を保つため括弧内でのみ実行されます。
 関数はJavaScriptと同じ機能を持つため値の操作を自由に行うことができます。</p>
 
 <table class="code-example" cellpadding="0">
