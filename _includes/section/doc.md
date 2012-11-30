@@ -586,9 +586,6 @@ background-image: url("@{base-url}/images/bg.png");
 
 <h2>セレクタの挿入</h2>
 
-<p>If you want to use less variables inside selectors, you can do this by referencing the variable using <code>@{selector}</code> as
-in string interpolation. For example:</p>
-
 <p>
 もしLESSの変数をセレクタとして利用したい場合に、文字列の挿入と同じように<code>@{selector}</code>を使って変数を参照できます。例として:
 </p>
