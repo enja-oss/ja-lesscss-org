@@ -605,8 +605,6 @@ background-image: url("@{base-url}/images/bg.png");
 }
 {% endhighlight %}
 
-<p>Note: prior to less 1.3.1 a <code>(~<span class="string">"@{name}"</span>)</code> type of selector was supported. Support for this will be removed in the near future.</p>
-
 <p>
 注意: LESS 1.3.1以前のバージョンでは<code>(~<span class="string">"@{name}"</span>)</code>のようなセレクタはサポートされていましたが、近い将来このサポートされなくなる予定です。
 </p>
