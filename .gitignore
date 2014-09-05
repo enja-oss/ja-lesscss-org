@@ -6,3 +6,5 @@ Thumbs.db
 !.gitkeep
 
 .rbenv-version
+
+_jekyll_s3.yml
